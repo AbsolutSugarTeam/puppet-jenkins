@@ -20,7 +20,8 @@ define jenkins::job::absent(
   }
 
   $tmp_config_path  = "/tmp/${jobname}-config.xml"
-  $job_dir          = "/var/lib/jenkins/jobs/${jobname}"
+  $service_home     = $::jenkins::service_home
+  $job_dir          = "${service_home}/jobs/${jobname}"
   $config_path      = "${job_dir}/config.xml"
 
   # Temp file to use as stdin for Jenkins CLI executable
