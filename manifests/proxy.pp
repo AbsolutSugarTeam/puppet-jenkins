@@ -9,8 +9,9 @@ class jenkins::proxy {
   $proxy_host = $::jenkins::proxy_host
   $proxy_port = $::jenkins::proxy_port
   $no_proxy_list = $::jenkins::no_proxy_list
+  $service_home = $::jenkins::service_home
 
-  file { '/var/lib/jenkins/proxy.xml':
+  file { "${service_home}/proxy.xml":
     content => template('jenkins/proxy.xml.erb'),
     owner   => 'jenkins',
     group   => 'jenkins',
